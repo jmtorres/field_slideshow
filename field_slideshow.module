@@ -804,6 +804,11 @@ function template_preprocess_field_slideshow(&$variables) {
   // Add css
   drupal_add_css(drupal_get_path('module', 'field_slideshow') . '/field_slideshow.css');
 
+  // Add the cloud zoom JS and CSS
+  drupal_add_js(drupal_get_path('module', 'cloud_zoom') .'/cloud-zoom/cloud-zoom.1.0.2.js');
+  drupal_add_js(drupal_get_path('module', 'cloud_zoom') .'/cloud_zoom.js');
+  drupal_add_css(drupal_get_path('module', 'cloud_zoom') .'/cloud-zoom/cloud-zoom.css');
+
   // Generate classes
   $variables['classes_array'][] = 'field-slideshow-' . $variables['id'];
   $variables['classes_array'][] = 'effect-' . $variables['fx'];
@@ -891,6 +896,8 @@ function template_preprocess_field_slideshow(&$variables) {
     if (isset($item['caption']) && $item['caption'] != '') $links['caption_path'] = 'caption';
     // Loop thru required links (because image and caption can have different links)
     foreach ($links as $link => $out) {
+      $item[$link]['path'] = image_style_url('product_image_zoom', $item['uri']);
+      $item[$link]['options']['attributes']['class'] = 'cloud-zoom';
       if (!empty($item[$link])) {
         $path = $item[$link]['path'];
         $options = $item[$link]['options'];

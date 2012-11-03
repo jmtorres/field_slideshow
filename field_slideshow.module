@@ -97,7 +97,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#options'        => image_style_options(FALSE),
       '#states' => array(
         'visible' => array(
-          ':input[name$="[settings_edit_form][settings][slideshow_link]"]' => array('value' => 'colorbox'),
+          ':input[name$="[settings][slideshow_link]"]' => array('value' => 'colorbox'),
         ),
       ),
     );
@@ -113,7 +113,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#options'        => $colorbox_slideshow,
       '#states' => array(
         'visible' => array(
-          ':input[name$="[settings_edit_form][settings][slideshow_link]"]' => array('value' => 'colorbox'),
+          ':input[name$="[settings][slideshow_link]"]' => array('value' => 'colorbox'),
         ),
       ),
     );
@@ -125,7 +125,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#description'    => t('Time between transitions (ms).'),
       '#states' => array(
         'invisible' => array(
-          ':input[name$="[settings_edit_form][settings][slideshow_colorbox_slideshow]"]' => array('value' => ''),
+          ':input[name$="[settings][slideshow_colorbox_slideshow]"]' => array('value' => ''),
         ),
       ),
     );
@@ -141,7 +141,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#options'        => $colorbox_transitions,
       '#states' => array(
         'visible' => array(
-          ':input[name$="[settings_edit_form][settings][slideshow_link]"]' => array('value' => 'colorbox'),
+          ':input[name$="[settings][slideshow_link]"]' => array('value' => 'colorbox'),
         ),
       ),
     );
@@ -153,7 +153,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#description'    => t('Duration of transition (ms).'),
       '#states' => array(
         'visible' => array(
-          ':input[name$="[settings_edit_form][settings][slideshow_link]"]' => array('value' => 'colorbox'),
+          ':input[name$="[settings][slideshow_link]"]' => array('value' => 'colorbox'),
         ),
       ),
     );
@@ -181,7 +181,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#options'        => $links,
     '#states' => array(
       'invisible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_caption]"]' => array('value' => ''),
+        ':input[name$="[settings][slideshow_caption]"]' => array('value' => ''),
       ),
     ),
   );
@@ -264,7 +264,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#default_value'  => $settings['slideshow_controls_position'],
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_controls]"]' => array('checked' => TRUE),
+        ':input[name$="[settings][slideshow_controls]"]' => array('checked' => TRUE),
       ),
     ),
   );
@@ -296,7 +296,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#default_value'  => $settings['slideshow_pager_position'],
     '#states' => array(
       'invisible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => ''),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => ''),
       ),
     ),
   );
@@ -309,7 +309,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#options'        => image_style_options(FALSE),
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'image'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'image'),
       ),
     ),
   );
@@ -322,7 +322,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#options'        => image_style_options(FALSE),
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -335,7 +335,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#description'    => t('The number of images that are visible in the pager. Defaults to 3.'),
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -348,7 +348,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#description'    => t('The number of images scrolled with each click. Defaults to 1.'),
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -361,7 +361,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#description'    => t('Speed of the Carousel scroll. Defaults to 500.'),
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -372,7 +372,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#default_value'  => $settings['slideshow_carousel_follow'],
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -383,7 +383,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#default_value'  => $settings['slideshow_carousel_vertical'],
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );
@@ -394,7 +394,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
     '#default_value'  => $settings['slideshow_carousel_circular'],
     '#states' => array(
       'visible' => array(
-        ':input[name$="[settings_edit_form][settings][slideshow_pager]"]' => array('value' => 'carousel'),
+        ':input[name$="[settings][slideshow_pager]"]' => array('value' => 'carousel'),
       ),
     ),
   );

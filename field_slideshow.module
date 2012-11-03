@@ -16,6 +16,7 @@ function field_slideshow_field_formatter_info() {
       'settings'    => array(
         'slideshow_image_style'               => '',
         'slideshow_link'                      => '',
+        'slideshow_cloud_zoom_image_style'    => '',
         'slideshow_colorbox_image_style'      => '',
         'slideshow_colorbox_slideshow'        => '',
         'slideshow_colorbox_slideshow_speed'  => '4000',
@@ -154,6 +155,22 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       '#states' => array(
         'visible' => array(
           ':input[name$="[settings][slideshow_link]"]' => array('value' => 'colorbox'),
+        ),
+      ),
+    );
+  }
+
+  if (module_exists('cloud_zoom')) {
+    $element['slideshow_link']['#options']['cloud_zoom'] = 'Cloud Zoom';
+    $element['slideshow_cloud_zoom_image_style'] = array(
+      '#title'          => t('Cloud Zoom image style'),
+      '#type'           => 'select',
+      '#default_value'  => $settings['slideshow_cloud_zoom_image_style'],
+      '#empty_option'   => t('None (original image)'),
+      '#options'        => image_style_options(FALSE),
+      '#states' => array(
+        'visible' => array(
+          ':input[name$="[settings][slideshow_link]"]' => array('value' => 'cloud_zoom'),
         ),
       ),
     );
@@ -616,6 +633,7 @@ function field_slideshow_field_formatter_view($entity_type, $entity, $field, $in
       break;
       case 'file':
       case 'colorbox':
+      case 'cloud_zoom'
         $link_type = 'file';
       break;
       default:
@@ -653,6 +671,14 @@ function field_slideshow_field_formatter_view($entity_type, $entity, $field, $in
               $uri['options']['attributes']['class'] = array('colorbox-load');
               $uri['path'] .= '?slideshow=true&slideshowAuto=' . (($settings['slideshow_colorbox_slideshow'] == 'automatic') ? 'true':'false') . '&slideshowSpeed=' . $settings['slideshow_colorbox_slideshow_speed'] . '&speed=' . $settings['slideshow_colorbox_speed'] . '&transition=' . $settings['slideshow_colorbox_transition'];
             }
+          }
+          else if ($settings[$setting] == 'cloud_zoom') {
+            if ($settings['slideshow_cloud_zoom_image_style'] != '') {
+              $uri['path'] = image_style_url($settings['slideshow_cloud_zoom_image_style'], $item['uri']);
+            }
+            $uri['options']['attributes'] = array(
+              'class' => array('cloud_zoom'),
+            );
           }
         break;
         case 'link_field':
@@ -893,8 +919,8 @@ function template_preprocess_field_slideshow(&$variables) {
     if (isset($item['caption']) && $item['caption'] != '') $links['caption_path'] = 'caption';
     // Loop thru required links (because image and caption can have different links)
     foreach ($links as $link => $out) {
-      $item[$link]['path'] = image_style_url('product_image_zoom', $item['uri']);
-      $item[$link]['options']['attributes']['class'] = 'cloud-zoom';
+      //$item[$link]['path'] = image_style_url('product_image_zoom', $item['uri']);
+      //$item[$link]['options']['attributes']['class'] = 'cloud-zoom';
       if (!empty($item[$link])) {
         $path = $item[$link]['path'];
         $options = $item[$link]['options'];

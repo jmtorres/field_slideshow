@@ -804,13 +804,7 @@ function template_preprocess_field_slideshow(&$variables) {
   // Add css
   drupal_add_css(drupal_get_path('module', 'field_slideshow') . '/field_slideshow.css');
 
-  // Add the cloud zoom JS and CSS
-  $path = libraries_get_path('jquery.actual');
-  if (file_exists($path . '/jquery.actual.js')) drupal_add_js($path . '/jquery.actual.js');
-  drupal_add_library('system', 'effects.scale');
-  drupal_add_js(drupal_get_path('module', 'cloud_zoom') .'/cloud-zoom/cloud-zoom.1.0.2.js');
-  drupal_add_js(drupal_get_path('module', 'cloud_zoom') .'/cloud_zoom.js');
-  drupal_add_css(drupal_get_path('module', 'cloud_zoom') .'/cloud-zoom/cloud-zoom.css');
+  cloud_zoom_add_library();
 
   // Generate classes
   $variables['classes_array'][] = 'field-slideshow-' . $variables['id'];

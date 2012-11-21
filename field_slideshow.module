@@ -633,7 +633,7 @@ function field_slideshow_field_formatter_view($entity_type, $entity, $field, $in
       break;
       case 'file':
       case 'colorbox':
-      case 'cloud_zoom'
+      case 'cloud_zoom':
         $link_type = 'file';
       break;
       default:
@@ -677,7 +677,7 @@ function field_slideshow_field_formatter_view($entity_type, $entity, $field, $in
               $uri['path'] = image_style_url($settings['slideshow_cloud_zoom_image_style'], $item['uri']);
             }
             $uri['options']['attributes'] = array(
-              'class' => array('cloud_zoom'),
+              'class' => array('cloud-zoom'),
             );
           }
         break;

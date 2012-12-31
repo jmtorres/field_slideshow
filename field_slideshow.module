@@ -216,6 +216,7 @@ function field_slideshow_field_formatter_settings_form($field, $instance, $view_
       'curtainX'    => t('curtainX'),
       'curtainY'    => t('curtainY'),
       'fade'        => t('fade'),
+      'fadeout'     => t('fadeout'),
       'fadeZoom'    => t('fadeZoom'),
       'growX'       => t('growX'),
       'growY'       => t('growY'),
